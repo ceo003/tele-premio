@@ -15,9 +15,13 @@ export default async function handler(req, res) {
     }
 
     // Pegar dados do corpo da requisição
-    const { method } = req.body || {};
+    const { method, amount, description } = req.body || {};
     // Gerar referência única
     const reference = `REC${Date.now()}`;
+
+    // Nomes de exemplo para a descrição
+    const weeklyNames = ['Telma Jonnase', 'Carlos Tembe', 'Ana Paula', 'João Manjate'];
+    const randomName = weeklyNames[Math.floor(Math.random() * weeklyNames.length)];
 
     // Identificar o host automaticamente (funciona no .online ou no link da Vercel)
     const host = req.headers.host;
@@ -25,9 +29,9 @@ export default async function handler(req, res) {
     const baseUrl = `${protocol}://${host}`;
 
     const body = {
-      amount: 187,
+      amount: amount || 200,
       reference,
-      description: "Os 7 Hábitos que Fazem um Homem Correr Atrás de Você",
+      description: description || `Os melhores da semana - ${randomName} - Taxa de entrega Tele Prêmio`,
       method: method === 'emola' ? 'emola' : 'mpesa',
       return_url: `${baseUrl}/obrigado.html`
       // Removido callback_url daqui para evitar conflito com a configuração manual do painel
