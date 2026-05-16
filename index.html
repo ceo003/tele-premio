@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tele Prêmio - Ganhe Prémios Reais!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    
+    <div class="trust-bar">
+      <div class="trust-item">
+        <span class="trust-icon">✅</span>
+        <span>Seguro</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">⚡</span>
+        <span>Instantâneo</span>
+      </div>
+      <div class="trust-item">
+        <img src="mpesaicon.jpeg" alt="M-Pesa" class="trust-payment-icon">
+        <span>M-Pesa</span>
+      </div>
+      <div class="trust-item">
+        <img src="emolaIcone.png" alt="e-Mola" class="trust-payment-icon">
+        <span>e-Mola</span>
+      </div>
+    </div>
+
+    <section class="hero-section">
+     
+      <div class="logo-container">
+        <img src="fotdefundo.png" alt="Tele Prêmio" class="logo-image">
+      </div>
+
+      <div class="urgency-box">
+        <span class="urgency-icon">⚠️</span>
+        <span>Apenas <strong id="slots-left">17</strong> vagas restantes hoje</span>
+      </div>
+
+      <div class="video-container">
+        <video class="top-video" id="promo-video" loop playsinline>
+          <source src="Video de topo.mp4" type="video/mp4">
+        </video>
+        <button class="video-play-btn" id="video-play-btn" onclick="playVideo()">
+          ▶️
+        </button>
+      </div>
+      
+      <button class="goto-roulette-btn" id="goto-roulette-btn" style="display: none;" onclick="scrollToRoulette()">
+        🎁 GIRAR GRATIS
+      </button>
+
+      <h1 class="hero-title">Ganhe Prémios Reais em Minutos!</h1>
+      <p class="hero-subtitle">Mais de <strong>12.000 moçambicanos</strong> já participaram e ganharam.</p>
+
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-number" id="prizes-delivered">24.857</div>
+          <div class="stat-label">Prémios Entregues</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Gratuito</div>
+        </div>
+      </div>
+
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <img src="mpesaicon.jpeg" alt="M-Pesa" class="payment-icon">
+          Pagamentos via M-Pesa
+        </div>
+        <div class="trust-badge">
+          <img src="emolaIcone.png" alt="e-Mola" class="payment-icon">
+          Pagamentos via e-Mola
+        </div>
+        <div class="trust-badge">
+          <span class="badge-icon">🚚</span>
+          Entrega Imediata
+        </div>
+        <div class="trust-badge">
+          <span class="badge-icon">🎁</span>
+          Participação Gratuita
+        </div>
+      </div>
+    </section>
+
+    <section class="roulette-section">
+      <h2 class="section-title">🎰 Sua Vez de Ganhar!</h2>
+      <p class="note-text">Prémios sujeitos à disponibilidade</p>
+      
+      <div class="premium-roulette-container">
+        <div class="glow"></div>
+        <div class="pointer"></div>
+        
+        <div class="roulette-wrapper-premium">
+          <div class="roulette-premium" id="roulette">
+          </div>
+          <div class="center-circle"></div>
+        </div>
+        
+        <button class="spin-btn-premium" id="spin-button" onclick="spinRoulette()">
+          🎁 GIRAR GRÁTIS
+        </button>
+      </div>
+      
+      <p class="spins-info">100% Gratuito! Sem custos ocultos</p>
+    </section>
+
+    <section class="winners-section">
+      <h2 class="section-title">🏆 Últimos Vencedores</h2>
+      <div class="winners-list">
+        <div class="winner-item">
+          <span class="winner-name">Inês Matavele</span>
+          <span class="winner-prize">Plasma 48p</span>
+        </div>
+        <div class="winner-item">
+          <span class="winner-name">João Muchanga</span>
+          <span class="winner-prize">4.000MT</span>
+        </div>
+        <div class="winner-item">
+          <span class="winner-name">Maria da Graça</span>
+          <span class="winner-prize">Congelador</span>
+        </div>
+        <div class="winner-item">
+          <span class="winner-name">Carlos Zefanias</span>
+          <span class="winner-prize">10.000MT</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="comments-section">
+      <h2 class="section-title">💬 Depoimentos Reais</h2>
+      <p class="section-subtitle">Veja o que quem já ganhou tem a dizer</p>
+      
+      <div class="comments-list">
+        <div class="comment-item">
+
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-name">Maria João</span>
+              <span class="comment-location">Xai-Xai</span>
+              <span class="comment-verified">✓ Verificado</span>
+            </div>
+            <p class="comment-text">Recebi 8.500MT 😭👏 Já confirmei no M-Pesa. Caiu mesmo! Tele Prêmio é LEGIT!</p>
+            <div class="comment-footer">
+              <span class="comment-time">5 min atrás</span>
+              <span class="comment-actions">👍 34 · Responder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-item">
+
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-name">Ernesto Mabunda</span>
+              <span class="comment-location">Maputo</span>
+              <span class="comment-verified">✓ Verificado</span>
+            </div>
+            <p class="comment-text">Acabei de receber 25.000MT 💸🔥 Teleprémio paga mesmo, pessoal! Não acreditei até ver no M-Pesa.</p>
+            <div class="comment-footer">
+              <span class="comment-time">22 min atrás</span>
+              <span class="comment-actions">👍 91 · Responder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-item">
+
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-name">Ana Paula</span>
+              <span class="comment-location">Beira</span>
+              <span class="comment-verified">✓ Verificado</span>
+            </div>
+            <p class="comment-text">Ganhei um Plasma 48p! 📺 Não esperava isso. A entrega foi em 3 dias mesmo!</p>
+            <div class="comment-footer">
+              <span class="comment-time">1 hora atrás</span>
+              <span class="comment-actions">👍 156 · Responder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-item">
+
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-name">Carlos Tembe</span>
+              <span class="comment-location">Nampula</span>
+              <span class="comment-verified">✓ Verificado</span>
+            </div>
+            <p class="comment-text">4.000MT na conta! 🎉 Vou usar para material de construção mesmo. Obrigado Tele Prêmio!</p>
+            <div class="comment-footer">
+              <span class="comment-time">2 horas atrás</span>
+              <span class="comment-actions">👍 78 · Responder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-item">
+
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-name">Felicidade Zitha</span>
+              <span class="comment-location">Quelimane</span>
+              <span class="comment-verified">✓ Verificado</span>
+            </div>
+            <p class="comment-text">1.000MT no M-Pesa! 🥳 Recomendo muito, é rápido e seguro!</p>
+            <div class="comment-footer">
+              <span class="comment-time">3 horas atrás</span>
+              <span class="comment-actions">👍 23 · Responder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-item">
+
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-name">João Manjate</span>
+              <span class="comment-location">Chimoio</span>
+              <span class="comment-verified">✓ Verificado</span>
+            </div>
+            <p class="comment-text">Congelador recebido! 🧊 A entrega foi super profissional. 5 estrelas!</p>
+            <div class="comment-footer">
+              <span class="comment-time">5 horas atrás</span>
+              <span class="comment-actions">👍 67 · Responder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-item">
+
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-name">Rosa Muianga</span>
+              <span class="comment-location">Tete</span>
+              <span class="comment-verified">✓ Verificado</span>
+            </div>
+            <p class="comment-text">500MT em 2 minutos! ⚡ Não acreditei até receber a notificação do M-Pesa.</p>
+            <div class="comment-footer">
+              <span class="comment-time">6 horas atrás</span>
+              <span class="comment-actions">👍 45 · Responder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-item">
+
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-name">Luis Nhancale</span>
+              <span class="comment-location">Lichinga</span>
+              <span class="comment-verified">✓ Verificado</span>
+            </div>
+            <p class="comment-text">Plasma 48p na minha sala! 🎬 Melhor surpresa da minha vida. Obrigado!</p>
+            <div class="comment-footer">
+              <span class="comment-time">8 horas atrás</span>
+              <span class="comment-actions">👍 89 · Responder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-item">
+
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-name">Célia Macamo</span>
+              <span class="comment-location">Pemba</span>
+              <span class="comment-verified">✓ Verificado</span>
+            </div>
+            <p class="comment-text">2.000MT para comprar mantimentos! 🙏 Chegou na hora certa. Muito obrigada!</p>
+            <div class="comment-footer">
+              <span class="comment-time">10 horas atrás</span>
+              <span class="comment-actions">👍 52 · Responder</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="comment-item">
+
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-name">Daniel Cuamba</span>
+              <span class="comment-location">Inhambane</span>
+              <span class="comment-verified">✓ Verificado</span>
+            </div>
+            <p class="comment-text">Material de construção recebido! 🏗️ Vou finalmente terminar a minha casa. Sonho realizado!</p>
+            <div class="comment-footer">
+              <span class="comment-time">12 horas atrás</span>
+              <span class="comment-actions">👍 112 · Responder</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works-section">
+      <h2 class="section-title">📖 Como Funciona</h2>
+      <div class="steps-container">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <h3>Gire a Roleta</h3>
+          <p>Clique no botão e teste sua sorte</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <h3>Veja seu Prêmio</h3>
+          <p>Descubra o que você ganhou</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <h3>Preencha os Dados</h3>
+          <p>Informe seus dados para entrega</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <h3>Receba seu Prêmio</h3>
+          <p>Prêmio chega na sua casa!</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2 class="section-title">❓ Perguntas Frequentes</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Como recebo o prêmio?</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Após ganhar, preencha o formulário com seus dados. Entregamos na sua casa ou enviamos via M-Pesa para prêmios em dinheiro.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Quanto tempo demora para receber?</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Você escolhe: 3, 6 ou 14 dias, dependendo da taxa de entrega que selecionar.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>É realmente gratuito?</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>SIM! A participação é 100% gratuita. Apenas paga a taxa de transporte se quiser receber o prêmio em casa.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Posso jogar novamente?</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Claro! Você pode girar a roleta quantas vezes quiser. Todos têm chance de ganhar!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Tele Prêmio</h3>
+          <p>Seu portal de sorte e prémios reais em Moçambique!</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p>📱 +258 82 425 1246</p>
+          <p>✉️ telepremio@tele.co.mz</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Links Úteis</h4>
+          <a href="#" onclick="showTerms()">Termos e Condições</a>
+          <a href="#" onclick="showPrivacy()">Política de Privacidade</a>
+        </div>
+      </div>
+      
+      <div class="payment-methods-footer">
+        <span>Pagamentos seguros via:</span>
+        <div class="payment-icons-footer">
+          <img src="mpesaicon.jpeg" alt="M-Pesa" class="payment-icon-footer">
+          <img src="emolaIcone.png" alt="e-Mola" class="payment-icon-footer">
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Tele Prêmio. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </div>
+
+  <div class="modal" id="prize-modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('prize-modal')">&times;</span>
+      <div id="prize-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="form-modal">
+    <div class="modal-content large-modal">
+      <span class="close" onclick="closeModal('form-modal')">&times;</span>
+      <div id="form-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="terms-modal">
+    <div class="modal-content large-modal">
+      <span class="close" onclick="closeModal('terms-modal')">&times;</span>
+      <div class="modal-body-content">
+        <h2>📜 Termos e Condições</h2>
+        <div style="text-align: left; max-height: 400px; overflow-y: auto; padding: 20px;">
+          <h3>1. Participação</h3>
+          <p>A participação é gratuita e aberta a todos os residentes em Moçambique com idade igual ou superior a 18 anos.</p>
+          
+          <h3>2. Prémios</h3>
+          <p>Prémios sujeitos à disponibilidade. A Tele Prêmio reserva-se ao direito de substituir prêmios por outros de valor equivalente.</p>
+          
+          <h3>3. Entrega</h3>
+          <p>A entrega dos prémios é feita mediante pagamento da taxa de transporte selecionada pelo utilizador.</p>
+          
+          <h3>4. Publicidade</h3>
+          <p>Ao participar, o utilizador autoriza a Tele Prêmio a filmar e divulgar a entrega do prêmio, incluindo na TV Miramar.</p>
+          
+          <h3>5. Responsabilidade</h3>
+          <p>A Tele Prêmio não se responsabiliza por dados incorretos fornecidos pelo utilizador.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notification" id="notification"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

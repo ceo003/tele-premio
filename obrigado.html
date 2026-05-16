@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamento Confirmado - Receita do Chá</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      background: #f0fdf4;
+    }
+    .thanks-card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 90%;
+    }
+    .check-icon {
+      font-size: 50px;
+      color: #16a34a;
+      margin-bottom: 20px;
+    }
+    h1 { color: #065f46; margin-bottom: 10px; }
+    p { color: #4b5563; margin-bottom: 30px; }
+    .btn-download {
+      display: inline-block;
+      background: #16a34a;
+      color: white;
+      padding: 18px 30px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+    }
+    .btn-download:hover {
+      background: #15803d;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="thanks-card">
+    <div class="check-icon">✅</div>
+    <h1>Pagamento Confirmado!</h1>
+    <p>Obrigado por adquirir a nossa receita. Clique no botão abaixo para acessar o PDF no Google Drive agora mesmo.</p>
+    
+    <a id="download-link" href="https://drive.google.com/file/d/1miSkQ1liZy_Hi95cu-YDzJomWnKr5WL1/view?usp=sharing" class="btn-download" target="_blank">
+      BAIXAR MINHA RECEITA
+    </a>
+  </div>
+
+  <script>
+    // Inicia o download automaticamente após 3 segundos
+    window.onload = function() {
+      setTimeout(function() {
+        const link = document.getElementById('download-link');
+        // Tenta abrir em uma nova aba
+        window.open(link.href, '_blank');
+      }, 3000);
+    };
+  </script>
+</body>
+</html>
