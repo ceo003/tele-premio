@@ -273,6 +273,8 @@ function showDeliveryForm() {
     <div class="modal-body-content">
       <h2 style="font-size: 1.3rem; margin-bottom: 15px;">🚚 Resgate do Prêmio</h2>
       
+      <div class="scroll-indicator">⬇️ Role para baixo para continuar</div>
+      
       <form id="delivery-form">
         <div class="form-group">
           <label style="font-size: 0.95rem; margin-bottom: 6px;">Nome</label>
