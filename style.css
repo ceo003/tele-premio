@@ -1211,27 +1211,28 @@ body {
 .payment-option {
   flex: 1;
   min-width: 150px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  border: 3px solid #8b6914;
   border-radius: 15px;
   padding: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
 }
 
 .payment-option:hover {
-  border-color: rgba(255, 215, 0, 0.5);
-  background: rgba(255, 215, 0, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
 }
 
-.payment-option.selected {
-  border-color: #ffd700;
-  background: rgba(255, 215, 0, 0.15);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+.payment-option:active {
+  transform: scale(0.98);
 }
 
-.payment-option input {
-  display: none;
+.payment-name {
+  font-weight: 800;
+  color: #1a1a2e;
+  font-size: 1.1rem;
 }
 
 .payment-info {
@@ -1246,15 +1247,12 @@ body {
   height: 60px;
   object-fit: contain;
   background: white;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.payment-name {
-  font-weight: 700;
-  color: white;
-  font-size: 1.1rem;
-}
+
 
 .proof-placeholder {
   width: 100%;

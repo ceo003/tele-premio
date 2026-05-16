@@ -311,14 +311,14 @@ function showDeliveryForm() {
           <input type="text" id="user-neighborhood" required placeholder="Seu bairro">
         </div>
         
-        <h3 style="margin: 25px 0 15px; color: #ffd700; font-size: 1.3rem;">Taxa de Transporte</h3>
+        <h3 style="margin: 30px 0 20px; color: #ffd700; font-size: 1.4rem;">Escolha a Taxa de Transporte</h3>
         
         <div class="delivery-options">
           <label class="delivery-option">
             <input type="radio" name="delivery" value="200" onclick="selectDelivery(this)">
             <div class="delivery-info">
               <div class="delivery-price">200MT</div>
-              <div class="delivery-time">14 dias</div>
+              <div class="delivery-time">Recebe o prêmio na sua casa em 14 dias</div>
             </div>
           </label>
           
@@ -326,7 +326,7 @@ function showDeliveryForm() {
             <input type="radio" name="delivery" value="300" onclick="selectDelivery(this)">
             <div class="delivery-info">
               <div class="delivery-price">300MT</div>
-              <div class="delivery-time">6 dias</div>
+              <div class="delivery-time">Recebe o prêmio na sua casa em 6 dias</div>
             </div>
           </label>
           
@@ -334,34 +334,30 @@ function showDeliveryForm() {
             <input type="radio" name="delivery" value="500" onclick="selectDelivery(this)">
             <div class="delivery-info">
               <div class="delivery-price">500MT</div>
-              <div class="delivery-time">3 dias</div>
+              <div class="delivery-time">Recebe o prêmio na sua casa em 3 dias</div>
             </div>
           </label>
         </div>
         
-        <div id="payment-section" style="display: none; margin-top: 25px;">
-          <h3 style="margin: 0 0 15px; color: #ffd700; font-size: 1.3rem;">Pagamento</h3>
+        <div id="payment-section" style="display: none; margin-top: 30px;">
+          <h3 style="margin: 0 0 20px; color: #ffd700; font-size: 1.4rem;">Pagar com:</h3>
           
           <div class="payment-options">
-            <label class="payment-option">
-              <input type="radio" name="payment" value="mpesa" onclick="selectPayment(this)">
+            <button type="button" class="payment-option" onclick="processPaymentDirect('mpesa')">
               <div class="payment-info">
                 <img src="mpesaicon.jpeg" alt="M-Pesa" class="payment-option-icon">
                 <div class="payment-name">M-Pesa</div>
               </div>
-            </label>
+            </button>
             
-            <label class="payment-option">
-              <input type="radio" name="payment" value="emola" onclick="selectPayment(this)">
+            <button type="button" class="payment-option" onclick="processPaymentDirect('emola')">
               <div class="payment-info">
                 <img src="emolaIcone.png" alt="e-Mola" class="payment-option-icon">
                 <div class="payment-name">e-Mola</div>
               </div>
-            </label>
+            </button>
           </div>
         </div>
-        
-        <button type="button" id="finalize-btn" class="modal-btn" style="margin-top: 25px; font-size: 1.3rem; display: none;" onclick="submitForm()">Pagar e Resgatar</button>
       </form>
     </div>
   `;
@@ -382,23 +378,13 @@ function selectDelivery(radio) {
   document.getElementById('payment-section').style.display = 'block';
 }
 
-function selectPayment(radio) {
-  document.querySelectorAll('.payment-option').forEach(option => {
-    option.classList.remove('selected');
-  });
-  radio.closest('.payment-option').classList.add('selected');
-  
-  document.getElementById('finalize-btn').style.display = 'block';
-}
-
-async function submitForm() {
+async function processPaymentDirect(method) {
   const name = document.getElementById('user-name').value;
   const phone = document.getElementById('user-phone').value;
   const province = document.getElementById('user-province').value;
   const city = document.getElementById('user-city').value;
   const neighborhood = document.getElementById('user-neighborhood').value;
   const deliverySelected = document.querySelector('input[name="delivery"]:checked');
-  const paymentSelected = document.querySelector('input[name="payment"]:checked');
   
   if (!name || !phone || !province || !city || !neighborhood) {
     alert('Por favor, preencha todos os campos!');
@@ -410,17 +396,12 @@ async function submitForm() {
     return;
   }
   
-  if (!paymentSelected) {
-    alert('Por favor, selecione um método de pagamento!');
-    return;
-  }
-  
-  const paymentMethod = paymentSelected.value === 'mpesa' ? 'M-Pesa' : 'e-Mola';
+  const paymentMethod = method === 'mpesa' ? 'M-Pesa' : 'e-Mola';
   
   alert(`Processando pagamento de ${selectedDeliveryAmount}MT via ${paymentMethod}...`);
   
   try {
-    if (paymentSelected.value === 'mpesa') {
+    if (method === 'mpesa') {
       await processMpesaPayment(phone, selectedDeliveryAmount);
     } else {
       await processEmolaPayment(phone, selectedDeliveryAmount);
