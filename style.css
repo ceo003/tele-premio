@@ -1547,4 +1547,39 @@ body {
   .hero-title {
     font-size: 1.5rem;
   }
+  
+  .cta-in-comments-btn {
+    font-size: 1.1rem;
+    padding: 14px 30px;
+  }
+}
+
+.cta-in-comments {
+  margin: 25px 0;
+  text-align: center;
+}
+
+.cta-in-comments-btn {
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  border: 4px solid #8b6914;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #1a1a2e;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+  animation: pulse 1.5s infinite;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-in-comments-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.7);
+}
+
+.cta-in-comments-btn:active {
+  transform: scale(0.98);
 }

