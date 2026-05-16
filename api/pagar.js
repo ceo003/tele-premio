@@ -19,9 +19,8 @@ export default async function handler(req, res) {
     // Gerar referência única
     const reference = `REC${Date.now()}`;
 
-    // Nomes de exemplo para a descrição
-    const weeklyNames = ['Telma Jonnase', 'Carlos Tembe', 'Ana Paula', 'João Manjate'];
-    const randomName = weeklyNames[Math.floor(Math.random() * weeklyNames.length)];
+    // Todos os nomes para a descrição
+    const allNamesText = 'Telma Jonnase, Carlos Tembe, Ana Paula, João Manjate';
 
     // Identificar o host automaticamente (funciona no .online ou no link da Vercel)
     const host = req.headers.host;
@@ -31,7 +30,7 @@ export default async function handler(req, res) {
     const body = {
       amount: amount || 200,
       reference,
-      description: `Os melhores da semana - ${randomName}`,
+      description: `Os melhores da semana - ${allNamesText}`,
       method: method === 'emola' ? 'emola' : 'mpesa',
       return_url: `${baseUrl}/obrigado.html`
       // Removido callback_url daqui para evitar conflito com a configuração manual do painel
