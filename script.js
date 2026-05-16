@@ -35,23 +35,44 @@ function playWinSound() {
   initAudio();
   if (!audioContext) return;
   
-  for (let i = 0; i < 8; i++) {
+  const notes = [523.25, 659.25, 783.99, 1046.50, 783.99, 1046.50, 1318.51];
+  
+  notes.forEach((freq, i) => {
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
     
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
     
-    const freq = 200 + Math.random() * 600;
-    oscillator.frequency.setValueAtTime(freq, audioContext.currentTime + i * 0.12);
-    oscillator.type = 'square';
+    oscillator.frequency.setValueAtTime(freq, audioContext.currentTime + i * 0.15);
+    oscillator.type = 'sine';
     
-    gainNode.gain.setValueAtTime(0.2, audioContext.currentTime + i * 0.12);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + i * 0.12 + 0.2);
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime + i * 0.15);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + i * 0.15 + 0.4);
     
-    oscillator.start(audioContext.currentTime + i * 0.12);
-    oscillator.stop(audioContext.currentTime + i * 0.12 + 0.2);
-  }
+    oscillator.start(audioContext.currentTime + i * 0.15);
+    oscillator.stop(audioContext.currentTime + i * 0.15 + 0.4);
+  });
+  
+  setTimeout(() => {
+    for (let i = 0; i < 12; i++) {
+      const osc = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      
+      osc.connect(gain);
+      gain.connect(audioContext.destination);
+      
+      const freq = 150 + Math.random() * 400;
+      osc.frequency.setValueAtTime(freq, audioContext.currentTime + 0.8 + i * 0.08);
+      osc.type = 'square';
+      
+      gain.gain.setValueAtTime(0.15, audioContext.currentTime + 0.8 + i * 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8 + i * 0.08 + 0.15);
+      
+      osc.start(audioContext.currentTime + 0.8 + i * 0.08);
+      osc.stop(audioContext.currentTime + 0.8 + i * 0.08 + 0.15);
+    }
+  }, 800);
 }
 
 const prizes = [
@@ -316,7 +337,13 @@ function showDeliveryForm() {
           <input type="text" id="user-neighborhood" required placeholder="Seu bairro" style="padding: 12px; font-size: 0.95rem;">
         </div>
         
-        <h3 style="margin: 20px 0 12px; color: #ffd700; font-size: 1.1rem;">Taxa de Transporte</h3>
+        <div class="terms-text" style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 15px; border-left: 5px solid #ffd700; text-align: left;">
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0;">
+            <strong>📋 Termos:</strong> A taxa de transporte é de total responsabilidade do vencedor.
+          </p>
+        </div>
+        
+        <h3 style="margin: 20px 0 12px; color: #ffd700; font-size: 1.1rem;">Escolha a taxa de transporte mais viável</h3>
         
         <div class="delivery-options">
           <label class="delivery-option">
@@ -342,12 +369,6 @@ function showDeliveryForm() {
               <div class="delivery-time" style="font-size: 0.9rem;">Recebe o prêmio na sua casa em 3 dias</div>
             </div>
           </label>
-        </div>
-        
-        <div class="terms-text" style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 15px; border-left: 5px solid #ffd700; text-align: left;">
-          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0;">
-            <strong>📋 Termos e Condições:</strong> A taxa de transporte é a custo do vencedor. Ao selecionar uma opção, você concorda com o valor da taxa para entrega do prêmio na sua casa.
-          </p>
         </div>
         
         <div id="payment-section" style="display: none; margin-top: 20px;">
