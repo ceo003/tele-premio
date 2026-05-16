@@ -374,6 +374,8 @@ function showDeliveryForm() {
         <div id="payment-section" style="display: none; margin-top: 20px;">
           <h3 style="margin: 0 0 12px; color: #ffd700; font-size: 1.1rem;">Pagar com:</h3>
           
+          <div class="scroll-indicator">⬇️ Role para baixo para pagar</div>
+          
           <div class="payment-options">
             <button type="button" class="payment-option" onclick="processPaymentDirect('mpesa')">
               <div class="payment-info">
@@ -390,8 +392,6 @@ function showDeliveryForm() {
             </button>
           </div>
         </div>
-        
-        <div class="scroll-indicator">⬇️ Role para baixo para pagar</div>
       </form>
     </div>
   `;
