@@ -35,24 +35,23 @@ function playWinSound() {
   initAudio();
   if (!audioContext) return;
   
-  const notes = [523.25, 659.25, 783.99, 1046.50];
-  
-  notes.forEach((freq, i) => {
+  for (let i = 0; i < 8; i++) {
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
     
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
     
-    oscillator.frequency.setValueAtTime(freq, audioContext.currentTime + i * 0.15);
-    oscillator.type = 'sine';
+    const freq = 200 + Math.random() * 600;
+    oscillator.frequency.setValueAtTime(freq, audioContext.currentTime + i * 0.12);
+    oscillator.type = 'square';
     
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime + i * 0.15);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + i * 0.15 + 0.5);
+    gainNode.gain.setValueAtTime(0.2, audioContext.currentTime + i * 0.12);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + i * 0.12 + 0.2);
     
-    oscillator.start(audioContext.currentTime + i * 0.15);
-    oscillator.stop(audioContext.currentTime + i * 0.15 + 0.5);
-  });
+    oscillator.start(audioContext.currentTime + i * 0.12);
+    oscillator.stop(audioContext.currentTime + i * 0.12 + 0.2);
+  }
 }
 
 const prizes = [
@@ -254,9 +253,12 @@ function showPrizeModal(prize) {
   
   modalBody.innerHTML = `
     <div class="modal-body-content">
-      <h2>🎉 Parabéns!</h2>
-      <p>Você ganhou: <strong style="color: #ffd700; font-size: 1.5rem;">${prize}</strong></p>
-      <button class="modal-btn" onclick="showDeliveryForm()">Resgatar Prêmio</button>
+      <h2>🎉 PARABÉNS! VOCÊ GANHOU!</h2>
+      <div style="font-size: 4rem; margin: 20px 0;">🏆</div>
+      <p>Seu prêmio: <strong style="color: #ffd700; font-size: 1.8rem;">${prize}</strong></p>
+      <p style="font-size: 1.1rem; margin-top: 15px; color: rgba(255,255,255,0.9);">O prêmio virá até a sua casa!</p>
+      <p style="font-size: 1rem; margin-top: 10px; color: rgba(255,255,255,0.7);">Agora preencha seus dados para receber</p>
+      <button class="modal-btn" onclick="showDeliveryForm()">📝 Preencher Dados</button>
     </div>
   `;
   
@@ -342,6 +344,12 @@ function showDeliveryForm() {
           </label>
         </div>
         
+        <div class="terms-text" style="margin: 20px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 15px; border-left: 5px solid #ffd700; text-align: left;">
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.9); margin: 0;">
+            <strong>📋 Termos e Condições:</strong> A taxa de transporte é a custo do vencedor. Ao selecionar uma opção, você concorda com o valor da taxa para entrega do prêmio na sua casa.
+          </p>
+        </div>
+        
         <div id="payment-section" style="display: none; margin-top: 20px;">
           <h3 style="margin: 0 0 12px; color: #ffd700; font-size: 1.1rem;">Pagar com:</h3>
           
@@ -361,6 +369,8 @@ function showDeliveryForm() {
             </button>
           </div>
         </div>
+        
+        <div class="scroll-indicator">⬇️ Role para baixo para pagar</div>
       </form>
     </div>
   `;
