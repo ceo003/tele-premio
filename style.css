@@ -213,7 +213,7 @@ body {
   transition: transform 5s cubic-bezier(.17, .67, .12, .99);
 }
 
-.roulette-label-wrapper {
+.label-fixed {
   position: absolute;
   top: 0;
   left: 0;
@@ -223,11 +223,11 @@ body {
   transform-origin: 50% 50%;
 }
 
-.roulette-label-text {
+.label-fixed span {
   position: absolute;
-  top: 15px;
+  top: 20px;
   left: 50%;
-  transform-origin: 50% 210px;
+  transform-origin: 50% 50%;
   color: white;
   font-size: 13px;
   font-weight: 800;
@@ -242,12 +242,54 @@ body {
 .simple-label {
   position: absolute;
   color: white;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 800;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, .8);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, .9);
   z-index: 5;
   white-space: nowrap;
   text-transform: uppercase;
+}
+
+.simple-label:nth-child(1) {
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.simple-label:nth-child(2) {
+  top: 65px;
+  right: 30px;
+}
+
+.simple-label:nth-child(3) {
+  top: 140px;
+  right: 20px;
+}
+
+.simple-label:nth-child(4) {
+  bottom: 140px;
+  right: 20px;
+}
+
+.simple-label:nth-child(5) {
+  bottom: 65px;
+  right: 30px;
+}
+
+.simple-label:nth-child(6) {
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.simple-label:nth-child(7) {
+  bottom: 65px;
+  left: 30px;
+}
+
+.simple-label:nth-child(8) {
+  top: 65px;
+  left: 30px;
 }
 
 .center-circle {
@@ -1253,109 +1295,115 @@ body {
   }
   
   .app-container {
-    padding: 15px;
+    padding: 10px;
     max-width: 100%;
   }
   
   .trust-bar {
     flex-wrap: wrap;
-    gap: 10px;
-    padding: 12px 10px;
+    gap: 8px;
+    padding: 10px 8px;
   }
   
   .trust-item {
     flex: 1 1 45%;
-    font-size: 12px;
+    font-size: 11px;
     padding: 8px 10px;
   }
   
   .trust-payment-icon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
   
   .logo-container {
-    top: 5px;
-    left: 5px;
+    position: static;
+    text-align: center;
+    margin-bottom: 15px;
+    padding-top: 10px;
   }
   
   .logo-image {
-    width: 80px;
+    width: 100px;
+    display: inline-block;
   }
   
   .hero-section {
-    padding-top: 70px;
+    padding-top: 10px;
   }
   
   .hero-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
   
   .stats-container {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
   }
   
   .trust-badges {
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
   
   .trust-badge {
     width: 100%;
     justify-content: center;
+    padding: 10px 15px;
   }
   
   .urgency-box {
-    font-size: 14px;
-    padding: 12px 15px;
+    font-size: 13px;
+    padding: 10px 12px;
   }
   
   .video-container {
-    border-radius: 15px;
+    border-radius: 12px;
+    margin: 15px 0;
   }
   
   .video-play-btn {
-    width: 70px;
-    height: 70px;
-    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
   }
   
   .goto-roulette-btn {
-    font-size: 1.2rem;
-    padding: 18px 30px;
+    font-size: 1.1rem;
+    padding: 16px 25px;
+    margin-top: 10px;
   }
   
   .section-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   
   .roulette-wrapper-premium {
-    width: 320px;
-    height: 320px;
+    width: 300px;
+    height: 300px;
   }
   
   .glow {
-    width: 370px;
-    height: 370px;
+    width: 350px;
+    height: 350px;
   }
   
   .simple-label {
-    font-size: 11px;
+    font-size: 10px;
   }
   
   .spin-btn-premium {
-    width: 280px;
-    font-size: 1.4rem;
-    padding: 18px;
+    width: 260px;
+    font-size: 1.3rem;
+    padding: 16px;
   }
   
   .winners-list {
-    gap: 15px;
+    gap: 12px;
   }
   
   .winners-grid {
@@ -1363,11 +1411,11 @@ body {
   }
   
   .testimonial {
-    padding: 20px 15px;
+    padding: 18px 12px;
   }
   
   .testimonial-name {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
   
   .steps-container {
@@ -1375,8 +1423,8 @@ body {
   }
   
   .faq-question {
-    font-size: 1rem;
-    padding: 15px;
+    font-size: 0.95rem;
+    padding: 14px;
   }
   
   .proofs-grid {
@@ -1397,34 +1445,38 @@ body {
   }
   
   .modal-content {
-    width: 95%;
-    margin: 10px;
-    max-height: 90vh;
+    width: 94%;
+    margin: 10px auto;
+    max-height: 88vh;
     overflow-y: auto;
+    border-radius: 20px;
   }
   
   .modal-body-content {
-    padding: 25px 20px;
+    padding: 20px 15px;
   }
   
   .form-group input,
   .form-group select {
     font-size: 16px;
+    padding: 12px;
   }
   
   .delivery-options {
     flex-direction: column;
+    gap: 12px;
   }
   
   .payment-options {
     flex-direction: column;
+    gap: 12px;
   }
   
   .notification {
     left: 10px;
     right: 10px;
-    font-size: 13px;
-    padding: 12px 15px;
+    font-size: 12px;
+    padding: 10px 12px;
   }
 }
 
@@ -1440,7 +1492,45 @@ body {
   }
   
   .simple-label {
-    font-size: 10px;
+    font-size: 9px;
+  }
+  
+  .simple-label:nth-child(1) {
+    top: 20px;
+  }
+  
+  .simple-label:nth-child(2) {
+    top: 55px;
+    right: 25px;
+  }
+  
+  .simple-label:nth-child(3) {
+    top: 120px;
+    right: 15px;
+  }
+  
+  .simple-label:nth-child(4) {
+    bottom: 120px;
+    right: 15px;
+  }
+  
+  .simple-label:nth-child(5) {
+    bottom: 55px;
+    right: 25px;
+  }
+  
+  .simple-label:nth-child(6) {
+    bottom: 20px;
+  }
+  
+  .simple-label:nth-child(7) {
+    bottom: 55px;
+    left: 25px;
+  }
+  
+  .simple-label:nth-child(8) {
+    top: 55px;
+    left: 25px;
   }
   
   .spin-btn-premium {
