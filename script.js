@@ -60,13 +60,17 @@ const prizes = [
   'TXOPELA',
   'MOTORIZADA',
   '0MT',
+  'CONGELADOR',
   '0MT',
   '100MT',
   'CAMIONETA 4 TON',
+  'MATERIAL',
+  '0MT',
+  '100MT',
   'TV PLASMA'
 ];
 
-const winningPrizes = [1, 2, 6, 7];
+const winningPrizes = [1, 2, 4, 7, 8, 11];
 
 const liveWinners = [
   { name: 'João de Maputo', prize: 'TV PLASMA' },
@@ -227,7 +231,7 @@ function spinRoulette() {
   const winningIndex = winningPrizes[Math.floor(Math.random() * winningPrizes.length)];
   currentPrize = prizes[winningIndex];
   
-  const prizeDegree = 360 - (winningIndex * 45 + 22.5);
+  const prizeDegree = 360 - (winningIndex * 30 + 15);
   const totalDegrees = 2520 + prizeDegree;
   
   roulette.style.transform = `rotate(${totalDegrees}deg)`;

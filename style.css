@@ -201,14 +201,18 @@ body {
   border-radius: 50%;
   position: relative;
   background: conic-gradient(
-    #ffd700 0deg 45deg,
-    #2146c7 45deg 90deg,
-    #ea1d25 90deg 135deg,
-    #09a56a 135deg 180deg,
-    #c53ce5 180deg 225deg,
-    #ff5b00 225deg 270deg,
-    #7413b5 270deg 315deg,
-    #8f2fff 315deg 360deg
+    #ffd700 0deg 30deg,
+    #2146c7 30deg 60deg,
+    #ea1d25 60deg 90deg,
+    #09a56a 90deg 120deg,
+    #c53ce5 120deg 150deg,
+    #ff5b00 150deg 180deg,
+    #7413b5 180deg 210deg,
+    #8f2fff 210deg 240deg,
+    #ffd700 240deg 270deg,
+    #2146c7 270deg 300deg,
+    #ea1d25 300deg 330deg,
+    #09a56a 330deg 360deg
   );
   transition: transform 5s cubic-bezier(.17, .67, .12, .99);
 }
@@ -242,55 +246,33 @@ body {
 .simple-label {
   position: absolute;
   color: white;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   text-shadow: 0 2px 4px rgba(0, 0, 0, .9);
   z-index: 5;
   white-space: nowrap;
   text-transform: uppercase;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+  transform-origin: center center;
 }
 
-.simple-label:nth-child(1) {
-  top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.simple-label:nth-child(2) {
-  top: 65px;
-  right: 30px;
-}
-
-.simple-label:nth-child(3) {
-  top: 140px;
-  right: 20px;
-}
-
-.simple-label:nth-child(4) {
-  bottom: 140px;
-  right: 20px;
-}
-
-.simple-label:nth-child(5) {
-  bottom: 65px;
-  right: 30px;
-}
-
-.simple-label:nth-child(6) {
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.simple-label:nth-child(7) {
-  bottom: 65px;
-  left: 30px;
-}
-
-.simple-label:nth-child(8) {
-  top: 65px;
-  left: 30px;
-}
+.simple-label:nth-child(1) { transform: rotate(0deg); }
+.simple-label:nth-child(2) { transform: rotate(30deg); }
+.simple-label:nth-child(3) { transform: rotate(60deg); }
+.simple-label:nth-child(4) { transform: rotate(90deg); }
+.simple-label:nth-child(5) { transform: rotate(120deg); }
+.simple-label:nth-child(6) { transform: rotate(150deg); }
+.simple-label:nth-child(7) { transform: rotate(180deg); }
+.simple-label:nth-child(8) { transform: rotate(210deg); }
+.simple-label:nth-child(9) { transform: rotate(240deg); }
+.simple-label:nth-child(10) { transform: rotate(270deg); }
+.simple-label:nth-child(11) { transform: rotate(300deg); }
+.simple-label:nth-child(12) { transform: rotate(330deg); }
 
 .center-circle {
   position: absolute;
@@ -1445,31 +1427,68 @@ body {
   }
   
   .modal-content {
-    width: 94%;
-    margin: 10px auto;
-    max-height: 88vh;
+    width: 92%;
+    margin: 15px auto;
+    max-height: 85vh;
     overflow-y: auto;
-    border-radius: 20px;
+    border-radius: 18px;
   }
   
   .modal-body-content {
-    padding: 20px 15px;
+    padding: 22px 16px;
+  }
+  
+  .modal-body-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
   }
   
   .form-group input,
   .form-group select {
     font-size: 16px;
-    padding: 12px;
+    padding: 14px 12px;
+    border-radius: 12px;
   }
   
   .delivery-options {
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
+  }
+  
+  .delivery-option {
+    padding: 16px;
+  }
+  
+  .delivery-price {
+    font-size: 1.3rem;
   }
   
   .payment-options {
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
+  }
+  
+  .payment-option {
+    padding: 16px;
+  }
+  
+  .payment-option-icon {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .modal-btn {
+    padding: 16px 25px;
+    font-size: 1.1rem;
   }
   
   .notification {
@@ -1492,45 +1511,18 @@ body {
   }
   
   .simple-label {
-    font-size: 9px;
+    font-size: 8px;
+    padding-top: 15px;
   }
   
-  .simple-label:nth-child(1) {
-    top: 20px;
+  .roulette-wrapper-premium {
+    width: 290px;
+    height: 290px;
   }
   
-  .simple-label:nth-child(2) {
-    top: 55px;
-    right: 25px;
-  }
-  
-  .simple-label:nth-child(3) {
-    top: 120px;
-    right: 15px;
-  }
-  
-  .simple-label:nth-child(4) {
-    bottom: 120px;
-    right: 15px;
-  }
-  
-  .simple-label:nth-child(5) {
-    bottom: 55px;
-    right: 25px;
-  }
-  
-  .simple-label:nth-child(6) {
-    bottom: 20px;
-  }
-  
-  .simple-label:nth-child(7) {
-    bottom: 55px;
-    left: 25px;
-  }
-  
-  .simple-label:nth-child(8) {
-    top: 55px;
-    left: 25px;
+  .glow {
+    width: 340px;
+    height: 340px;
   }
   
   .spin-btn-premium {
